@@ -1,12 +1,14 @@
 package org.esgi.cleanarchi.cli.dto;
 
+import java.util.List;
+
 public class RemoveDtoParser {
-    public RemoveDto parse(String[] args){
-        if (args.length == 0) {
+    public RemoveDto parse(List<String> args){
+        if (args.size() == 0) {
             return new RemoveDto(null);
         } else {
             try {
-                int idToRemove = Integer.parseInt(args[0]);
+                int idToRemove = Integer.parseInt(args.get(0));
                 return new RemoveDto(idToRemove);
             } catch(IllegalArgumentException exception) {
                 return new RemoveDto(null);

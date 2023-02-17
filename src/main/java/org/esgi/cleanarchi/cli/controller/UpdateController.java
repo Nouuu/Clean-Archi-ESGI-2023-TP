@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.cli.controller;
 
+import org.esgi.cleanarchi.cli.dto.UpdateDto;
 import org.esgi.cleanarchi.cli.validator.ArgValidator;
 
 public class UpdateController {
@@ -9,8 +10,8 @@ public class UpdateController {
         this.validator = validator;
     }
 
-    public Void handle(String[] args) {
-        this.validator.validate(args);
+    public Void handle(UpdateDto updateDto) {
+        this.validator.validate(updateDto);
         return null;
     }
 }

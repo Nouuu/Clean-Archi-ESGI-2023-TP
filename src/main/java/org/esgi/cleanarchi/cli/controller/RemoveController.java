@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.cli.controller;
 
+import org.esgi.cleanarchi.cli.dto.RemoveDto;
 import org.esgi.cleanarchi.cli.validator.ArgValidator;
 
 public class RemoveController{
@@ -8,8 +9,8 @@ public class RemoveController{
     public RemoveController(ArgValidator validator){
         this.validator = validator;
     }
-    public Void handle(String[] args) {
-        this.validator.validate(args);
+    public Void handle(RemoveDto removeDto) {
+        this.validator.validate(removeDto);
         return null;
     }
 }

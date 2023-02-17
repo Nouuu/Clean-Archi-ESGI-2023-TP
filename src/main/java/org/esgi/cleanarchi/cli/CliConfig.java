@@ -5,8 +5,7 @@ import org.esgi.cleanarchi.cli.controller.AddController;
 import org.esgi.cleanarchi.cli.controller.ListController;
 import org.esgi.cleanarchi.cli.controller.RemoveController;
 import org.esgi.cleanarchi.cli.controller.UpdateController;
-import org.esgi.cleanarchi.cli.dto.AddDto;
-import org.esgi.cleanarchi.cli.dto.AddDtoParser;
+import org.esgi.cleanarchi.cli.dto.*;
 import org.esgi.cleanarchi.cli.validator.ListControllerValidator;
 
 public class CliConfig {
@@ -34,10 +33,12 @@ public class CliConfig {
                 listController.handle();
                 break;
             case ("update"):
-                updateController.handle();
+                UpdateDto updateDto = new UpdateDtoParser().parse(args);
+                updateController.handle(updateDto);
                 break;
-            case ("list"):
-                removeController.handle();
+            case ("remove"):
+                RemoveDto removeDto = new RemoveDtoParser().parse(args);
+                removeController.handle(removeDto);
                 break;
         }
     }
