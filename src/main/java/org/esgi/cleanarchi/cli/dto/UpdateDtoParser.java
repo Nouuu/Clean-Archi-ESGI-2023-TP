@@ -1,7 +1,10 @@
 package org.esgi.cleanarchi.cli.dto;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class UpdateDtoParser {
@@ -20,7 +23,7 @@ public class UpdateDtoParser {
 
     private String parseContent(List<String> args) {
         int index = args.indexOf("-c");
-        if (index + 1 < args.size()) {
+        if (index != -1 && index + 1 < args.size()) {
             return args.get(index + 1);
         } else {
             return null;
@@ -29,13 +32,21 @@ public class UpdateDtoParser {
 
     private ZonedDateTime parseDueDate(List<String> args) {
         String element = args.stream().filter(arg -> arg.startsWith("-d:")).findFirst().orElse(null);
+        System.out.println(element);
         if(element == null) {
             return null;
         }
-        String[] dueDateSplit = element.split(":");
+        String[] dueDateSplit = element.split("-d:");
+
         if(dueDateSplit.length == 2) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            return ZonedDateTime.parse(dueDateSplit[1], formatter);
+            try {
+                System.out.println(dueDateSplit[1]);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                return  LocalDate.parse(dueDateSplit[1], formatter).atStartOfDay(ZoneId.systemDefault());
+            }catch (DateTimeParseException exception) {
+                System.out.println(exception);
+                return null;
+            }
         } else {
             return null;
         }

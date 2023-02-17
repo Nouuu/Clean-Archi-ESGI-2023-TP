@@ -6,16 +6,22 @@ import org.esgi.cleanarchi.cli.controller.ListController;
 import org.esgi.cleanarchi.cli.controller.RemoveController;
 import org.esgi.cleanarchi.cli.controller.UpdateController;
 import org.esgi.cleanarchi.cli.dto.*;
+import org.esgi.cleanarchi.cli.helper.CliHelper;
 
 public class CliConfig {
     private final AddController addController;
-    private ListController listController;
-    private UpdateController updateController;
-    private RemoveController removeController;
+    private final ListController listController;
+    private final UpdateController updateController;
+    private final RemoveController removeController;
+    private final CliHelper cliHelper;
 
-    public CliConfig(AddController addController){
+    public CliConfig(AddController addController, ListController listController,
+                     UpdateController updateController, RemoveController removeController, CliHelper cliHelper) {
         this.addController = addController;
-
+        this.listController = listController;
+        this.updateController = updateController;
+        this.removeController = removeController;
+        this.cliHelper = cliHelper;
     }
 
     public void parseArg(List<String> args){
@@ -32,6 +38,9 @@ public class CliConfig {
             case ("remove") -> {
                 RemoveDto removeDto = new RemoveDtoParser().parse(args);
                 removeController.handle(removeDto);
+            }
+            default -> {
+                cliHelper.printHelpMessage();
             }
         }
     }
