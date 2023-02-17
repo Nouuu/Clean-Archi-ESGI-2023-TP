@@ -32,7 +32,6 @@ public class UpdateDtoParser {
 
     private ZonedDateTime parseDueDate(List<String> args) {
         String element = args.stream().filter(arg -> arg.startsWith("-d:")).findFirst().orElse(null);
-        System.out.println(element);
         if(element == null) {
             return null;
         }
@@ -40,11 +39,9 @@ public class UpdateDtoParser {
 
         if(dueDateSplit.length == 2) {
             try {
-                System.out.println(dueDateSplit[1]);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 return  LocalDate.parse(dueDateSplit[1], formatter).atStartOfDay(ZoneId.systemDefault());
             }catch (DateTimeParseException exception) {
-                System.out.println(exception);
                 return null;
             }
         } else {
@@ -57,15 +54,17 @@ public class UpdateDtoParser {
         if(element == null) {
             return null;
         }
-        String[] dueDateSplit = element.split(":");
+        String[] dueDateSplit = element.split("-s:");
         if(dueDateSplit.length == 2) {
             try {
-                return StateDto.fromValue(dueDateSplit[1]);
+                return StateDto.fromValue(dueDateSplit[1].trim());
             } catch (IllegalArgumentException exception) {
+
                 return null;
             }
         } else {
             return null;
         }
     }
+
 }
