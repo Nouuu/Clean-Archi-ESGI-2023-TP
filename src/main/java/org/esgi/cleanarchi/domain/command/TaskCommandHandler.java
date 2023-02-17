@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.domain.command;
 
+import java.util.ArrayList;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.domain.TaskState;
@@ -25,11 +26,11 @@ public class TaskCommandHandler {
         Task task = Task.of(
                 id,
                 command.description(),
-                command.createdDate(),
+                null,
                 Optional.ofNullable(command.dueDate()),
-                Optional.ofNullable(command.closeDate()),
-                command.taskState(),
-                command.subTasks()
+                Optional.empty(),
+                TaskState.TODO,
+                new ArrayList<>()
         );
         taskRepository.save(task);
         logger.log("[Create task] Task \"" + task.description() + "\" created with id " + id);

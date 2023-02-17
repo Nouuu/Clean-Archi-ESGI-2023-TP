@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.infra.io;
 
+import java.util.Objects;
 import org.esgi.cleanarchi.kernel.Logger;
 import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
 
@@ -11,8 +12,8 @@ public class FileReader implements Reader {
     private final Path path;
     private final Logger logger;
 
-    public FileReader(Path path, Logger logger) {
-        this.path = path;
+    public FileReader(String path, Logger logger) {
+        this.path = Objects.requireNonNull(Path.of(path));
         this.logger = logger;
     }
 

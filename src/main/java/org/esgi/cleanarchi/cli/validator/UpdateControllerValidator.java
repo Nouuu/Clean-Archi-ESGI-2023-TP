@@ -10,6 +10,6 @@ public class UpdateControllerValidator implements ArgValidator<UpdateDto> {
     }
 
     private boolean validateCommentArgOptional(String[] args) {
-
+        return false;
     }
 }
