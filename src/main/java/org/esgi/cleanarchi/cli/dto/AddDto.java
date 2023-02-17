@@ -1,9 +1,9 @@
 package org.esgi.cleanarchi.cli.dto;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 
 public record AddDto(
     String content,
-    Date dueDate
+    ZonedDateTime dueDate
 ) {
 }

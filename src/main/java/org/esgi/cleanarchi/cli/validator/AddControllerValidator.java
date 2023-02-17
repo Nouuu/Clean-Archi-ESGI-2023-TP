@@ -1,11 +1,11 @@
 package org.esgi.cleanarchi.cli.validator;
 
-import java.util.Arrays;
+import org.esgi.cleanarchi.cli.dto.AddDto;
 
-public class AddControllerValidator implements ArgValidator {
+public class AddControllerValidator implements ArgValidator<AddDto> {
 
     @Override
-    public boolean validate(String[] args) {
-        return !Arrays.asList(args).contains("-s") && args.length >= Arrays.asList(args).indexOf("-c") + 1;
+    public boolean validate(AddDto dto) {
+        return dto.content() != null;
     }
 }

@@ -2,10 +2,10 @@ package org.esgi.cleanarchi.cli.controller;
 
 import org.esgi.cleanarchi.cli.validator.ArgValidator;
 
-public class UpdateController implements Controller<Void>{
+public class UpdateController {
     private final ArgValidator validator;
 
-    public UpdateController(ArgValidator validator){
+    public UpdateController(ArgValidator validator) {
         this.validator = validator;
     }
 

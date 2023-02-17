@@ -1,8 +1,10 @@
 package org.esgi.cleanarchi.cli.validator;
 
-public class RemoveControllerValidator implements ArgValidator {
+import org.esgi.cleanarchi.cli.dto.RemoveDto;
+
+public class RemoveControllerValidator implements ArgValidator<RemoveDto> {
     @Override
-    public boolean validate(String[] args) {
+    public boolean validate(RemoveDto args) {
         return true;
     }
 }

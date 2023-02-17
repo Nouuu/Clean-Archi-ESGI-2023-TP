@@ -2,7 +2,7 @@ package org.esgi.cleanarchi.cli.controller;
 
 import org.esgi.cleanarchi.cli.validator.ArgValidator;
 
-public class RemoveController implements Controller<Void>{
+public class RemoveController{
     private final ArgValidator validator;
 
     public RemoveController(ArgValidator validator){

@@ -1,6 +1,6 @@
 package org.esgi.cleanarchi.cli.controller;
 
-public class ListController implements Controller<Void>{
+public class ListController{
     public Void handle() {
 
         return null;

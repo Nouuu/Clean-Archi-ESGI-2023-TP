@@ -1,18 +1,13 @@
 package org.esgi.cleanarchi.cli;
 
+import java.util.List;
 import org.esgi.cleanarchi.cli.controller.AddController;
-import org.esgi.cleanarchi.cli.controller.Controller;
 import org.esgi.cleanarchi.cli.controller.ListController;
 import org.esgi.cleanarchi.cli.controller.RemoveController;
 import org.esgi.cleanarchi.cli.controller.UpdateController;
-import org.esgi.cleanarchi.cli.validator.AddControllerValidator;
+import org.esgi.cleanarchi.cli.dto.AddDto;
+import org.esgi.cleanarchi.cli.dto.AddDtoParser;
 import org.esgi.cleanarchi.cli.validator.ListControllerValidator;
-import org.esgi.cleanarchi.cli.validator.RemoveControllerValidator;
-import org.esgi.cleanarchi.cli.validator.UpdateControllerValidator;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CliConfig {
     private final AddController addController;
@@ -29,11 +24,11 @@ public class CliConfig {
 
     }
 
-    public void parseArg(String[] args){
-        switch (args[0]) {
+    public void parseArg(List<String> args){
+        switch (args.get(0)) {
             case ("add"):
-
-                addController.handle(obj);
+                AddDto dto = new AddDtoParser().parse(args);
+                addController.handle(dto);
                 break;
             case ("list"):
                 listController.handle();

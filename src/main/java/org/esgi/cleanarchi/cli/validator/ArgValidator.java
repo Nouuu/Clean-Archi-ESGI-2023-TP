@@ -1,5 +1,5 @@
 package org.esgi.cleanarchi.cli.validator;
 
-public interface ArgValidator {
-    boolean validate(String[] args);
+public interface ArgValidator<T> {
+    boolean validate(T args);
 }
