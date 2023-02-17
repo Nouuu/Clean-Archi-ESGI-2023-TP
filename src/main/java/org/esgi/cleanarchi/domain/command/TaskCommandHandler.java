@@ -26,12 +26,13 @@ public class TaskCommandHandler {
         Task task = Task.of(
                 id,
                 command.description(),
-                null,
+                ZonedDateTime.now(),
                 Optional.ofNullable(command.dueDate()),
                 Optional.empty(),
                 TaskState.TODO,
                 new ArrayList<>()
         );
+        System.out.println(task);
         taskRepository.save(task);
         logger.log("[Create task] Task \"" + task.description() + "\" created with id " + id);
         return id;
