@@ -6,6 +6,9 @@ import org.esgi.cleanarchi.cli.controller.ListController;
 import org.esgi.cleanarchi.cli.controller.RemoveController;
 import org.esgi.cleanarchi.cli.controller.UpdateController;
 import org.esgi.cleanarchi.cli.dto.*;
+import org.esgi.cleanarchi.cli.dto.parser.AddDtoParser;
+import org.esgi.cleanarchi.cli.dto.parser.RemoveDtoParser;
+import org.esgi.cleanarchi.cli.dto.parser.UpdateDtoParser;
 import org.esgi.cleanarchi.cli.helper.CliHelper;
 
 public class CliConfig {

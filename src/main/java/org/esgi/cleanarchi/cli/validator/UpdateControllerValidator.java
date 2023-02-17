@@ -5,8 +5,7 @@ import org.esgi.cleanarchi.cli.dto.UpdateDto;
 public class UpdateControllerValidator implements ArgValidator<UpdateDto> {
     @Override
     public boolean validate(UpdateDto updateDto) {
-
-        return true;
+        return updateDto.id() != null;
     }
 
 
