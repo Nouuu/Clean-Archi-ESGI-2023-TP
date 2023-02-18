@@ -26,4 +26,4 @@ public enum TaskState {
         }
         throw new IllegalArgumentException("Invalid TaskState value: " + value);
     }
-    }
+}
