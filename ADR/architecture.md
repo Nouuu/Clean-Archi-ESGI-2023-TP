@@ -45,7 +45,7 @@ We have ruled out the idea of event sourcing as it is not the goal here and we w
 
 
 
-### Positive Consequences <!-- optional -->
+### Positive Consequences
 
 * Maintainability
 
