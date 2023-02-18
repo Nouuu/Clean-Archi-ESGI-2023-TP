@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public record UpdateTaskCommand(
         Integer id,
+
+        String content,
         ZonedDateTime dueDate,
         TaskState taskState
 ) {

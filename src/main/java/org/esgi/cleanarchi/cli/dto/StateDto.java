@@ -2,6 +2,8 @@ package org.esgi.cleanarchi.cli.dto;
 
 import org.esgi.cleanarchi.domain.TaskState;
 
+import java.util.Objects;
+
 public enum StateDto {
     TODO("todo"),
     PENDING("pending"),
@@ -22,7 +24,7 @@ public enum StateDto {
 
     public static StateDto fromValue(String value) {
         for (StateDto status : StateDto.values()) {
-            if (status.value == value) {
+            if (Objects.equals(status.value, value)) {
                 return status;
             }
         }
