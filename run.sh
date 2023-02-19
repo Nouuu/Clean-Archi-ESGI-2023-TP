@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Nom du fichier jar
-JAR_FILE="tp-1.0-SNAPSHOT-standalone.jar"
+JAR_FILE="tp-1.0-standalone.jar"
 
 # Fonction pour vérifier si le fichier jar existe
 function jar_exists() {

@@ -19,10 +19,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TaskCommandHandlerTest {
-
     TaskRepository taskRepository;
     TaskCommandHandler taskCommandHandler;
-
     Writer writer;
     MockReader reader;
 
@@ -40,7 +38,7 @@ class TaskCommandHandlerTest {
     @Test
     void createTaskTest() {
         int idCreated = this.taskCommandHandler.createTask(
-            new CreateTaskCommand("description", null)
+            new CreateTaskCommand("description", null, null)
         );
 
         assertEquals(4, idCreated);

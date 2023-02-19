@@ -35,7 +35,7 @@ class TaskQueryHandlerTest {
         String fixture = ResourceUtils.getContentStringFromResource("/taskFixture.json");
         reader.setNextContent(fixture);
         taskRepository = new JsonTaskRepository(reader, writer, logger);
-        this.taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
+        this.taskQueryHandler = new TaskQueryHandler(taskRepository);
     }
 
     @Test

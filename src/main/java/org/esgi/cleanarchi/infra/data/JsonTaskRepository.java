@@ -14,6 +14,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class JsonTaskRepository implements TaskRepository {
@@ -71,18 +72,34 @@ public class JsonTaskRepository implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAll() {
-        return TaskEntityMapper.fromEntities(List.copyOf(tasks.values()));
-    }
-
-    @Override
     public List<Task> getAllOrderByCreatedDate() {
         return TaskEntityMapper.fromEntities(
-                List.copyOf(tasks.values())
+                List.copyOf(
+                                tasks.values()
+                                        .stream()
+                                        .filter(taskEntity -> taskEntity.parentId() == null)
+                                        .map(taskEntity -> TaskEntityMapper
+                                                .withSubTasks(taskEntity, fromParentId(taskEntity.id()))
+                                        )
+                                        .toList()
+                        )
                         .stream()
                         .sorted(Comparator.comparing(TaskEntity::createdDate))
                         .toList()
         );
+    }
+
+    private List<TaskEntity> fromParentId(Integer parentId) {
+        if (parentId == null) {
+            return List.of();
+        }
+        return List.copyOf(tasks.values())
+                .stream()
+                .filter(taskEntity -> Objects.equals(parentId, taskEntity.parentId()))
+                .map(taskEntity -> TaskEntityMapper
+                        .withSubTasks(taskEntity, fromParentId(taskEntity.id()))
+                )
+                .toList();
     }
 
     @Override
