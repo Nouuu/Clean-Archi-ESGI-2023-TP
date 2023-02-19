@@ -2,13 +2,14 @@ package org.esgi.cleanarchi.infra.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.esgi.cleanarchi.infra.io.Reader;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
+import org.esgi.cleanarchi.infra.io.Reader;
 import org.esgi.cleanarchi.infra.io.Writer;
 import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
+import org.esgi.cleanarchi.kernel.Logger;
 
-import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -22,17 +23,29 @@ public class JsonTaskRepository implements TaskRepository {
     private final Reader reader;
     private final Writer writer;
 
-    private final Gson gson = new GsonBuilder().create();
+    private final Logger logger;
+
+    private final Gson gson = new GsonBuilder()
+            .setPrettyPrinting()
+            .registerTypeAdapter(ZonedDateTime.class, new ZoneDateTimeTypeAdapter())
+            .create();
     private Integer nextId;
 
-    public JsonTaskRepository(Reader reader, Writer writer) throws IOException {
+    public JsonTaskRepository(Reader reader, Writer writer, Logger logger) throws InputOutputException {
         this.reader = reader;
         this.writer = writer;
-        //load();
+        this.logger = logger;
+        load();
     }
 
-    private void load() throws IOException {
-        String json = reader.read();
+    private void load() throws InputOutputException {
+        String json;
+        try {
+            json = reader.read();
+        } catch (InputOutputException e) {
+            logger.logError("Seems like the file don't exist, creating a new db");
+            json = "[]";
+        }
         TaskEntity[] taskEntities = gson.fromJson(json, TaskEntity[].class);
         for (TaskEntity taskEntity : taskEntities) {
             tasks.put(taskEntity.id(), taskEntity);

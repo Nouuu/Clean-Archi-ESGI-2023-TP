@@ -4,19 +4,19 @@ import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskState;
 
 import java.util.List;
-import java.util.Optional;
 
 public class TaskEntityMapper {
 
     private TaskEntityMapper() {
     }
+
     static Task fromEntity(TaskEntity taskEntity) {
         return Task.of(
                 taskEntity.id(),
                 taskEntity.description(),
                 taskEntity.createdDate(),
-                Optional.ofNullable(taskEntity.dueDate()),
-                Optional.ofNullable(taskEntity.closeDate()),
+                taskEntity.dueDate(),
+                taskEntity.closeDate(),
                 TaskState.valueOf(taskEntity.taskState()),
                 fromEntities(taskEntity.subTasks())
         );

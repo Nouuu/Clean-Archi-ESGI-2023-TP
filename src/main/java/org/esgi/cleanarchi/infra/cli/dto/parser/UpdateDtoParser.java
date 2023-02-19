@@ -11,14 +11,14 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class UpdateDtoParser {
-    public UpdateDto parse(List<String> args){
+    public UpdateDto parse(List<String> args) {
         if (args.size() == 0) {
             return new UpdateDto(null, null, null, null);
         } else {
             try {
                 int idToRemove = Integer.parseInt(args.get(0));
                 return new UpdateDto(idToRemove, parseContent(args), parseDueDate(args), parseTaskState(args));
-            } catch(IllegalArgumentException exception) {
+            } catch (IllegalArgumentException exception) {
                 return new UpdateDto(null, parseContent(args), parseDueDate(args), parseTaskState(args));
             }
         }
@@ -35,16 +35,16 @@ public class UpdateDtoParser {
 
     private ZonedDateTime parseDueDate(List<String> args) {
         String element = args.stream().filter(arg -> arg.startsWith("-d:")).findFirst().orElse(null);
-        if(element == null) {
+        if (element == null) {
             return null;
         }
         String[] dueDateSplit = element.split("-d:");
 
-        if(dueDateSplit.length == 2) {
+        if (dueDateSplit.length == 2) {
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                return  LocalDate.parse(dueDateSplit[1], formatter).atStartOfDay(ZoneId.systemDefault());
-            }catch (DateTimeParseException exception) {
+                return LocalDate.parse(dueDateSplit[1], formatter).atStartOfDay(ZoneId.systemDefault());
+            } catch (DateTimeParseException exception) {
                 return null;
             }
         } else {
@@ -54,11 +54,11 @@ public class UpdateDtoParser {
 
     private StateDto parseTaskState(List<String> args) {
         String element = args.stream().filter(arg -> arg.startsWith("-s:")).findFirst().orElse(null);
-        if(element == null) {
+        if (element == null) {
             return null;
         }
         String[] dueDateSplit = element.split("-s:");
-        if(dueDateSplit.length == 2) {
+        if (dueDateSplit.length == 2) {
             try {
                 return StateDto.valueOf(dueDateSplit[1].trim().toUpperCase());
             } catch (IllegalArgumentException exception) {

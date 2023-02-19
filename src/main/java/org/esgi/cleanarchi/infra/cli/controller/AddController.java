@@ -1,9 +1,9 @@
 package org.esgi.cleanarchi.infra.cli.controller;
 
-import org.esgi.cleanarchi.infra.cli.dto.AddDto;
-import org.esgi.cleanarchi.infra.cli.validator.ArgValidator;
 import org.esgi.cleanarchi.domain.command.CreateTaskCommand;
 import org.esgi.cleanarchi.domain.command.TaskCommandHandler;
+import org.esgi.cleanarchi.infra.cli.dto.AddDto;
+import org.esgi.cleanarchi.infra.cli.validator.ArgValidator;
 import org.esgi.cleanarchi.infra.io.Writer;
 
 public class AddController {
@@ -18,7 +18,7 @@ public class AddController {
     }
 
     public void handle(AddDto dto) {
-        if (validator.validate(dto)){
+        if (validator.validate(dto)) {
             this.taskCommandHandler.createTask(new CreateTaskCommand(dto.content(), dto.dueDate()));
         } else {
             this.writer.write("Error: Invalid arguments for the command add");

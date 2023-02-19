@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class AddDtoParser {
-    public AddDto parse(List<String> args){
+    public AddDto parse(List<String> args) {
         String content = parseContent(args);
         ZonedDateTime date = parseDueDate(args);
         return new AddDto(content, date);
     }
 
     private String parseContent(List<String> args) {
-        if (args.contains("-c") && args.indexOf("-c") +1 <= args.size()) {
+        if (args.contains("-c") && args.indexOf("-c") + 1 <= args.size()) {
             return args.get(args.indexOf("-c") + 1);
         } else {
             return null;
