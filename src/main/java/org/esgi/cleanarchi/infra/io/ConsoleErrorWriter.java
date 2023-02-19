@@ -2,7 +2,7 @@ package org.esgi.cleanarchi.infra.io;
 
 import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
 
-public class ConsoleErrorWriter implements Writer{
+public class ConsoleErrorWriter implements Writer {
 
     @Override
     public void write(String s) throws InputOutputException {

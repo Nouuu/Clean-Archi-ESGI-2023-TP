@@ -7,16 +7,21 @@ import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 public class InMemoryTaskRepository implements TaskRepository {
     DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
     private final List<Task> tasks = new ArrayList<Task>(Arrays.asList(
-            Task.of(1, "init a project to create an app for my tasks", ZonedDateTime.parse("2022-02-15T22:14:30.486798+01:00", formatter), Optional.ofNullable(ZonedDateTime.parse("2022-02-15T22:14:30.486798+01:00", formatter)), null, TaskState.TODO, null),
-            Task.of(2, "make a design of my needs to manage my tasks", ZonedDateTime.parse("2022-02-13T22:14:30.536023+01:00", formatter), Optional.ofNullable(ZonedDateTime.parse("2022-02-16T21:14:30.536024+01:00", formatter)), null, TaskState.PROGRESS, null),
-            Task.of(3, "brainstorm on what project to work on", ZonedDateTime.parse("2022-01-16T22:14:30.536143+01:00", formatter), Optional.ofNullable(ZonedDateTime.parse("2022-02-16T21:14:30.536024+01:00", formatter)), Optional.ofNullable(ZonedDateTime.parse("2022-02-11T22:14:30.536144+01:00", formatter)), TaskState.CLOSED, null)
+            Task.of(1, "init a project to create an app for my tasks", ZonedDateTime.parse("2022-02-15T22:14:30.486798+01:00", formatter), ZonedDateTime.parse("2022-02-15T22:14:30.486798+01:00", formatter), null, TaskState.TODO, null),
+            Task.of(2, "make a design of my needs to manage my tasks", ZonedDateTime.parse("2022-02-13T22:14:30.536023+01:00", formatter), ZonedDateTime.parse("2022-02-16T21:14:30.536024+01:00", formatter), null, TaskState.PROGRESS, null),
+            Task.of(3, "brainstorm on what project to work on", ZonedDateTime.parse("2022-01-16T22:14:30.536143+01:00", formatter), ZonedDateTime.parse("2022-02-16T21:14:30.536024+01:00", formatter), ZonedDateTime.parse("2022-02-11T22:14:30.536144+01:00", formatter), TaskState.CLOSED, null)
     ));
+
     @Override
     public void save(Task task) throws InputOutputException {
         this.tasks.add(task);

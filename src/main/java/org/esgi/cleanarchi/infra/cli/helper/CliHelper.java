@@ -12,6 +12,7 @@ public class CliHelper {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     private final Writer writer;
+
     public CliHelper(Writer writer) {
         this.writer = writer;
     }
@@ -41,7 +42,8 @@ public class CliHelper {
         };
         this.writer.write(color + task);
     }
-    public void displayOverdueTask(Task task){
+
+    public void displayOverdueTask(Task task) {
         this.writer.write(ANSI_RED + task);
     }
 }

@@ -1,8 +1,9 @@
 package org.esgi.cleanarchi.infra.cli.helper;
 
+import org.esgi.cleanarchi.domain.Task;
+
 import java.time.ZonedDateTime;
 import java.util.function.Predicate;
-import org.esgi.cleanarchi.domain.Task;
 
 public class OverdueTaskPredicate implements Predicate<Task> {
     @Override

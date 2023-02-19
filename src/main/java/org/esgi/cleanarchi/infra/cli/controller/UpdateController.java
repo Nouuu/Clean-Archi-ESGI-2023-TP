@@ -1,10 +1,10 @@
 package org.esgi.cleanarchi.infra.cli.controller;
 
+import org.esgi.cleanarchi.domain.command.TaskCommandHandler;
+import org.esgi.cleanarchi.domain.command.UpdateTaskCommand;
 import org.esgi.cleanarchi.infra.cli.dto.UpdateDto;
 import org.esgi.cleanarchi.infra.cli.dto.adapter.StateDtoAdapter;
 import org.esgi.cleanarchi.infra.cli.validator.ArgValidator;
-import org.esgi.cleanarchi.domain.command.TaskCommandHandler;
-import org.esgi.cleanarchi.domain.command.UpdateTaskCommand;
 import org.esgi.cleanarchi.infra.io.Writer;
 
 public class UpdateController {

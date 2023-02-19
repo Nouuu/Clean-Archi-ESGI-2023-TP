@@ -1,12 +1,12 @@
 package org.esgi.cleanarchi.infra.io;
 
-import java.util.Objects;
-import org.esgi.cleanarchi.kernel.Logger;
 import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
+import org.esgi.cleanarchi.kernel.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class FileReader implements Reader {
     private final Path path;

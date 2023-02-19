@@ -1,7 +1,7 @@
 package org.esgi.cleanarchi.infra.cli.dto.adapter;
 
-import org.esgi.cleanarchi.infra.cli.dto.StateDto;
 import org.esgi.cleanarchi.domain.TaskState;
+import org.esgi.cleanarchi.infra.cli.dto.StateDto;
 
 public class StateDtoAdapter {
 

@@ -4,7 +4,6 @@ import org.esgi.cleanarchi.domain.Task;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Objects;
 
 public class TaskResponseAdapter {
     public static TaskResponse fromTask(Task task) {

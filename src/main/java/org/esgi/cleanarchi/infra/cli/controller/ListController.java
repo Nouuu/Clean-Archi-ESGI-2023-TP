@@ -1,10 +1,11 @@
 package org.esgi.cleanarchi.infra.cli.controller;
 
-import java.util.List;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;
 import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
 import org.esgi.cleanarchi.infra.cli.helper.OverdueTaskPredicate;
+
+import java.util.List;
 
 public class ListController {
 
@@ -22,8 +23,8 @@ public class ListController {
         List<Task> result = this.taskQueryHandler.getAllTasksOrderByCreatedDate();
 
         List<Task> overdueTasks = result.stream()
-            .filter(overdueTaskPredicate)
-            .toList();
+                .filter(overdueTaskPredicate)
+                .toList();
         overdueTasks.forEach(cliHelper::displayOverdueTask);
         result.removeAll(overdueTasks);
         result.forEach(cliHelper::displayColoredTask);

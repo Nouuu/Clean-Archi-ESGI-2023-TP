@@ -9,12 +9,12 @@ public final class Task {
     private final Integer id;
     private final String description;
     private final ZonedDateTime createdDate;
-    private final Optional<ZonedDateTime> dueDate;
-    private final Optional<ZonedDateTime> closeDate;
+    private final ZonedDateTime dueDate;
+    private final ZonedDateTime closeDate;
     private final TaskState taskState;
     private final List<Task> subTasks;
 
-    private Task(Integer id, String description, ZonedDateTime createdDate, Optional<ZonedDateTime> dueDate, Optional<ZonedDateTime> closeDate, TaskState taskState, List<Task> subTasks) {
+    private Task(Integer id, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
         this.id = Objects.requireNonNull(id);
         this.description = Objects.requireNonNull(description);
         this.createdDate = Objects.requireNonNull(createdDate);
@@ -24,7 +24,7 @@ public final class Task {
         this.subTasks = subTasks;
     }
 
-    public static Task of(Integer id, String description, ZonedDateTime createdDate, Optional<ZonedDateTime> dueDate, Optional<ZonedDateTime> closeDate, TaskState taskState, List<Task> subTasks) {
+    public static Task of(Integer id, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
         return new Task(id, description, createdDate, dueDate, closeDate, taskState, subTasks);
     }
 
@@ -41,11 +41,11 @@ public final class Task {
     }
 
     public Optional<ZonedDateTime> dueDate() {
-        return dueDate;
+        return Optional.ofNullable(dueDate);
     }
 
     public Optional<ZonedDateTime> closeDate() {
-        return closeDate;
+        return Optional.ofNullable(closeDate);
     }
 
     public TaskState taskState() {
@@ -59,13 +59,13 @@ public final class Task {
     @Override
     public String toString() {
         return "Task{" +
-            "id=" + id +
-            ", description='" + description + '\'' +
-            ", createdDate=" + createdDate +
-            ", dueDate=" + dueDate +
-            ", closeDate=" + closeDate +
-            ", taskState=" + taskState +
-            ", subTasks=" + subTasks +
-            '}';
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", createdDate=" + createdDate +
+                ", dueDate=" + dueDate +
+                ", closeDate=" + closeDate +
+                ", taskState=" + taskState +
+                ", subTasks=" + subTasks +
+                '}';
     }
 }

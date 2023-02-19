@@ -1,6 +1,5 @@
 package org.esgi.cleanarchi.domain.command;
 
-import java.util.ArrayList;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.domain.TaskState;
@@ -8,6 +7,7 @@ import org.esgi.cleanarchi.kernel.Logger;
 import org.esgi.cleanarchi.kernel.exception.NotFoundException;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -27,12 +27,12 @@ public class TaskCommandHandler {
                 id,
                 command.description(),
                 ZonedDateTime.now(),
-                Optional.ofNullable(command.dueDate()),
-                Optional.empty(),
+                command.dueDate(),
+                null,
                 TaskState.TODO,
                 new ArrayList<>()
         );
-        System.out.println(task);
+//        System.out.println(task);
         taskRepository.save(task);
         logger.log("[Create task] Task \"" + task.description() + "\" created with id " + id);
         return id;
@@ -50,7 +50,7 @@ public class TaskCommandHandler {
                 task.id(),
                 task.description(),
                 task.createdDate(),
-                command.dueDate() == null ? task.dueDate() : Optional.of(command.dueDate()),
+                command.dueDate() == null ? task.dueDate().orElse(null) : command.dueDate(),
                 getOptionalZonedDateTime(command, task),
                 getTaskState(command, task),
                 task.subTasks()
@@ -59,11 +59,11 @@ public class TaskCommandHandler {
         logger.log("[Update task] Task \"" + updatedTask.description() + "\" updated");
     }
 
-    private Optional<ZonedDateTime> getOptionalZonedDateTime(UpdateTaskCommand command, Task task) {
+    private ZonedDateTime getOptionalZonedDateTime(UpdateTaskCommand command, Task task) {
         if (Objects.equals(command.taskState(), TaskState.CLOSED) && task.closeDate().isEmpty()) {
-            return Optional.of(ZonedDateTime.now());
+            return ZonedDateTime.now();
         }
-        return task.closeDate();
+        return task.closeDate().orElse(null);
     }
 
     private TaskState getTaskState(UpdateTaskCommand command, Task task) {
