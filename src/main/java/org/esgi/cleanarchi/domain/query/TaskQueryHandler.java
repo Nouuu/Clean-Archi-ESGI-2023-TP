@@ -27,10 +27,6 @@ public class TaskQueryHandler {
         return task.get();
     }
 
-    public List<Task> getAllTasks() {
-        return taskRepository.getAll();
-    }
-
     public List<Task> getAllTasksOrderByCreatedDate() {
         return taskRepository.getAllOrderByCreatedDate();
     }

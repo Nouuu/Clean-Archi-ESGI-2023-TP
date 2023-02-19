@@ -28,11 +28,6 @@ public class InMemoryTaskRepository implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAll() {
-        return this.tasks;
-    }
-
-    @Override
     public List<Task> getAllOrderByCreatedDate() {
         return this.tasks.stream().sorted(Comparator.comparing(Task::createdDate)).toList();
     }
@@ -45,7 +40,6 @@ public class InMemoryTaskRepository implements TaskRepository {
     @Override
     public Integer nextId() {
         int max = this.tasks.stream().max(Comparator.comparing(Task::id)).get().id();
-        System.out.println(max + 1);
         return max + 1;
     }
 }
