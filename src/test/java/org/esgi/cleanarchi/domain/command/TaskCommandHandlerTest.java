@@ -19,10 +19,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TaskCommandHandlerTest {
-
     TaskRepository taskRepository;
     TaskCommandHandler taskCommandHandler;
-
     Writer writer;
     MockReader reader;
 
