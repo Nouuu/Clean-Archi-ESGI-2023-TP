@@ -5,7 +5,6 @@ import org.esgi.cleanarchi.infra.cli.controller.AddController;
 import org.esgi.cleanarchi.infra.cli.controller.ListController;
 import org.esgi.cleanarchi.infra.cli.controller.RemoveController;
 import org.esgi.cleanarchi.infra.cli.controller.UpdateController;
-import org.esgi.cleanarchi.cli.dto.*;
 import org.esgi.cleanarchi.infra.cli.dto.AddDto;
 import org.esgi.cleanarchi.infra.cli.dto.parser.AddDtoParser;
 import org.esgi.cleanarchi.infra.cli.dto.parser.RemoveDtoParser;
