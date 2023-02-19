@@ -31,7 +31,7 @@ public class CliConfig {
     }
 
     public void parseArg(List<String> args) {
-        if (args.size() == 0) {
+        if (args.isEmpty()) {
             cliHelper.printHelpMessage();
             return;
         }
@@ -50,9 +50,8 @@ public class CliConfig {
                 RemoveDto removeDto = new RemoveDtoParser().parse(dtoArgs);
                 removeController.handle(removeDto);
             }
-            case ("help") -> {
-                cliHelper.printHelpMessage();
-            }
+            case ("help") -> cliHelper.printHelpMessage();
+
             default -> {
                 cliHelper.printErrorCommandNotKnown();
                 cliHelper.printHelpMessage();

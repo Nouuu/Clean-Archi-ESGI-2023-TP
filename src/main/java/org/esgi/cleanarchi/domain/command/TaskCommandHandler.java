@@ -48,7 +48,7 @@ public class TaskCommandHandler {
         Task task = optionalTask.get();
         Task updatedTask = Task.of(
                 task.id(),
-                task.description(),
+                command.content() == null ? task.description() : command.content(),
                 task.createdDate(),
                 command.dueDate() == null ? task.dueDate().orElse(null) : command.dueDate(),
                 getOptionalZonedDateTime(command, task),
