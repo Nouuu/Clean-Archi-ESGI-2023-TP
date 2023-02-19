@@ -1,4 +1,4 @@
-package org.esgi.cleanarchi.cli.controller;
+package org.esgi.cleanarchi.infra.cli.controller;
 
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;

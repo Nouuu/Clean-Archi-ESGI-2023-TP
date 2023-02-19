@@ -1,6 +1,6 @@
-package org.esgi.cleanarchi.cli.validator;
+package org.esgi.cleanarchi.infra.cli.validator;
 
-import org.esgi.cleanarchi.cli.dto.AddDto;
+import org.esgi.cleanarchi.infra.cli.dto.AddDto;
 
 public class AddControllerValidator implements ArgValidator<AddDto> {
     @Override

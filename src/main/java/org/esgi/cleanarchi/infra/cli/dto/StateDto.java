@@ -1,6 +1,4 @@
-package org.esgi.cleanarchi.cli.dto;
-
-import org.esgi.cleanarchi.domain.TaskState;
+package org.esgi.cleanarchi.infra.cli.dto;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
-package org.esgi.cleanarchi.cli.dto.parser;
+package org.esgi.cleanarchi.infra.cli.dto.parser;
 
-import org.esgi.cleanarchi.cli.dto.StateDto;
-import org.esgi.cleanarchi.cli.dto.UpdateDto;
+import org.esgi.cleanarchi.infra.cli.dto.StateDto;
+import org.esgi.cleanarchi.infra.cli.dto.UpdateDto;
 
 import java.time.LocalDate;
 import java.time.ZoneId;

@@ -1,14 +1,14 @@
 package org.esgi.cleanarchi;
 
-import org.esgi.cleanarchi.cli.CliConfig;
-import org.esgi.cleanarchi.cli.controller.AddController;
-import org.esgi.cleanarchi.cli.controller.ListController;
-import org.esgi.cleanarchi.cli.controller.RemoveController;
-import org.esgi.cleanarchi.cli.controller.UpdateController;
-import org.esgi.cleanarchi.cli.helper.CliHelper;
-import org.esgi.cleanarchi.cli.validator.AddControllerValidator;
-import org.esgi.cleanarchi.cli.validator.RemoveControllerValidator;
-import org.esgi.cleanarchi.cli.validator.UpdateControllerValidator;
+import org.esgi.cleanarchi.infra.cli.CliConfig;
+import org.esgi.cleanarchi.infra.cli.controller.AddController;
+import org.esgi.cleanarchi.infra.cli.controller.ListController;
+import org.esgi.cleanarchi.infra.cli.controller.RemoveController;
+import org.esgi.cleanarchi.infra.cli.controller.UpdateController;
+import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
+import org.esgi.cleanarchi.infra.cli.validator.AddControllerValidator;
+import org.esgi.cleanarchi.infra.cli.validator.RemoveControllerValidator;
+import org.esgi.cleanarchi.infra.cli.validator.UpdateControllerValidator;
 import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.domain.command.TaskCommandHandler;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;

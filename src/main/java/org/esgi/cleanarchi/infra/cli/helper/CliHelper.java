@@ -1,4 +1,4 @@
-package org.esgi.cleanarchi.cli.helper;
+package org.esgi.cleanarchi.infra.cli.helper;
 
 import org.esgi.cleanarchi.infra.io.Writer;
 

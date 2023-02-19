@@ -1,9 +1,9 @@
 package org.esgi.cleanarchi.cli;
 
 
-import org.esgi.cleanarchi.cli.dto.StateDto;
-import org.esgi.cleanarchi.cli.dto.UpdateDto;
-import org.esgi.cleanarchi.cli.dto.parser.UpdateDtoParser;
+import org.esgi.cleanarchi.infra.cli.dto.StateDto;
+import org.esgi.cleanarchi.infra.cli.dto.UpdateDto;
+import org.esgi.cleanarchi.infra.cli.dto.parser.UpdateDtoParser;
 import org.junit.Test;
 
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package org.esgi.cleanarchi.cli.dto;
+package org.esgi.cleanarchi.infra.cli.dto;
 
 import java.time.ZonedDateTime;
 

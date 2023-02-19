@@ -1,6 +1,6 @@
-package org.esgi.cleanarchi.cli.dto.parser;
+package org.esgi.cleanarchi.infra.cli.dto.parser;
 
-import org.esgi.cleanarchi.cli.dto.RemoveDto;
+import org.esgi.cleanarchi.infra.cli.dto.RemoveDto;
 
 import java.util.List;
 

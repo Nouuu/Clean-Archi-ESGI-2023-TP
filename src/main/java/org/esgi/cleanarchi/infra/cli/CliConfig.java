@@ -1,15 +1,18 @@
-package org.esgi.cleanarchi.cli;
+package org.esgi.cleanarchi.infra.cli;
 
 import java.util.List;
-import org.esgi.cleanarchi.cli.controller.AddController;
-import org.esgi.cleanarchi.cli.controller.ListController;
-import org.esgi.cleanarchi.cli.controller.RemoveController;
-import org.esgi.cleanarchi.cli.controller.UpdateController;
+import org.esgi.cleanarchi.infra.cli.controller.AddController;
+import org.esgi.cleanarchi.infra.cli.controller.ListController;
+import org.esgi.cleanarchi.infra.cli.controller.RemoveController;
+import org.esgi.cleanarchi.infra.cli.controller.UpdateController;
 import org.esgi.cleanarchi.cli.dto.*;
-import org.esgi.cleanarchi.cli.dto.parser.AddDtoParser;
-import org.esgi.cleanarchi.cli.dto.parser.RemoveDtoParser;
-import org.esgi.cleanarchi.cli.dto.parser.UpdateDtoParser;
-import org.esgi.cleanarchi.cli.helper.CliHelper;
+import org.esgi.cleanarchi.infra.cli.dto.AddDto;
+import org.esgi.cleanarchi.infra.cli.dto.parser.AddDtoParser;
+import org.esgi.cleanarchi.infra.cli.dto.parser.RemoveDtoParser;
+import org.esgi.cleanarchi.infra.cli.dto.parser.UpdateDtoParser;
+import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
+import org.esgi.cleanarchi.infra.cli.dto.RemoveDto;
+import org.esgi.cleanarchi.infra.cli.dto.UpdateDto;
 
 public class CliConfig {
     private final AddController addController;

@@ -1,6 +1,6 @@
-package org.esgi.cleanarchi.cli.validator;
+package org.esgi.cleanarchi.infra.cli.validator;
 
-import org.esgi.cleanarchi.cli.dto.RemoveDto;
+import org.esgi.cleanarchi.infra.cli.dto.RemoveDto;
 
 public class RemoveControllerValidator implements ArgValidator<RemoveDto> {
     @Override
