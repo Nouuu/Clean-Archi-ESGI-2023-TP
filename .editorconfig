@@ -3,3 +3,6 @@ end_of_line = lf
 
 [*.java]
 end_of_line = lf
+
+[*.xml]
+end_of_line = lf
