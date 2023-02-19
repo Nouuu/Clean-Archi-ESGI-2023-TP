@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "description": "description 1",
+    "createdDate": "2023-02-19T15:50:44.4565946+01:00",
+    "taskState": "TODO",
+    "subTasks": []
+  },
+  {
+    "id": 2,
+    "description": "description 2",
+    "createdDate": "2023-02-19T15:52:44.4666475+01:00",
+    "dueDate": "2023-02-26T15:50:44.4666475+01:00",
+    "taskState": "PROGRESS",
+    "subTasks": []
+  },
+  {
+    "id": 3,
+    "description": "description 3",
+    "createdDate": "2023-02-19T15:50:44.4666475+01:00",
+    "dueDate": "2023-02-22T15:50:44.4666475+01:00",
+    "closeDate": "2023-02-20T15:50:44.4666475+01:00",
+    "taskState": "CLOSED",
+    "subTasks": []
+  }
+]
