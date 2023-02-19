@@ -104,6 +104,10 @@ public class JsonTaskRepository implements TaskRepository {
 
     @Override
     public void delete(Integer id) {
+        fromParentId(id)
+                .stream()
+                .map(TaskEntity::id)
+                .forEach(this::delete);
         tasks.remove(id);
         save();
     }
