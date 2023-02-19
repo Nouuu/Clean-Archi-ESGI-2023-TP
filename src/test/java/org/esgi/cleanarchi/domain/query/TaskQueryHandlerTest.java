@@ -3,7 +3,7 @@ package org.esgi.cleanarchi.domain.query;
 
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
-import org.esgi.cleanarchi.infra.InMemoryLogger;
+import org.esgi.cleanarchi.infra.FakeLogger;
 import org.esgi.cleanarchi.infra.InMemoryTaskRepository;
 import org.esgi.cleanarchi.kernel.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TaskQueryHandlerTest {
     TaskRepository taskRepository;
     TaskQueryHandler taskQueryHandler;
-    Logger logger = new InMemoryLogger();
+    Logger logger = new FakeLogger();
 
     @BeforeEach
     public void setUp() {
