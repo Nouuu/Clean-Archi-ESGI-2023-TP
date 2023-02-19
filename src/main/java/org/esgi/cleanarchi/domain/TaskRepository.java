@@ -10,6 +10,8 @@ public interface TaskRepository {
 
     Optional<Task> get(Integer id);
 
+    List<Task> getAll();
+
     List<Task> getAllOrderByCreatedDate();
 
     void delete(Integer id);

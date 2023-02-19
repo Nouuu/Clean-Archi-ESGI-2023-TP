@@ -58,6 +58,11 @@ public class JsonTaskRepository implements TaskRepository {
     }
 
     @Override
+    public List<Task> getAll() {
+        return TaskEntityMapper.fromEntities(List.copyOf(tasks.values()));
+    }
+
+    @Override
     public List<Task> getAllOrderByCreatedDate() {
         return TaskEntityMapper.fromEntities(
                 List.copyOf(tasks.values())
