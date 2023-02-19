@@ -60,7 +60,7 @@ public class UpdateDtoParser {
         String[] dueDateSplit = element.split("-s:");
         if(dueDateSplit.length == 2) {
             try {
-                return StateDto.fromValue(dueDateSplit[1].trim());
+                return StateDto.valueOf(dueDateSplit[1].trim().toUpperCase());
             } catch (IllegalArgumentException exception) {
 
                 return null;
