@@ -26,8 +26,8 @@ public class ListController {
         List<Task> overdueTasks = result.stream()
                 .filter(overdueTaskPredicate)
                 .toList();
-        overdueTasks.forEach(cliHelper::displayOverdueTask);
+        overdueTasks.forEach(task -> cliHelper.displayOverdueTask(task, 0));
         result.removeAll(overdueTasks);
-        result.forEach(cliHelper::displayColoredTask);
+        result.forEach(task -> cliHelper.displayColoredTask(task, 0));
     }
 }

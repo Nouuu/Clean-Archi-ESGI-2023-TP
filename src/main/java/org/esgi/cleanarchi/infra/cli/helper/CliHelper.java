@@ -33,7 +33,7 @@ public class CliHelper {
         this.writer.write("Error: Command not known");
     }
 
-    public void displayColoredTask(Task task) {
+    public void displayColoredTask(Task task, int indent) {
         var color = switch (task.taskState()) {
             case TODO -> ANSI_PURPLE;
             case PENDING -> ANSI_CYAN;
@@ -42,11 +42,17 @@ public class CliHelper {
             case CANCELLED -> ANSI_BLUE;
             case CLOSED -> ANSI_BLUE_DARKER;
         };
-        this.writer.write(color + formatTask(task));
+        this.writer.write(color + formatTask(task).indent(indent));
+        if (!task.subTasks().isEmpty()) {
+            task.subTasks().forEach(subTask -> displayColoredTask(subTask, indent + 2));
+        }
     }
 
-    public void displayOverdueTask(Task task) {
-        this.writer.write(ANSI_RED + formatTask(task));
+    public void displayOverdueTask(Task task, int indent) {
+        this.writer.write(ANSI_RED + formatTask(task).indent(indent));
+        if (!task.subTasks().isEmpty()) {
+            task.subTasks().forEach(subTask -> displayOverdueTask(subTask, indent + 2));
+        }
     }
 
     private String formatTask(Task task) {

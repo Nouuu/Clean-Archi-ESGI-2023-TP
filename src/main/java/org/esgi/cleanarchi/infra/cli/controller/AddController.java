@@ -19,7 +19,7 @@ public class AddController {
 
     public void handle(AddDto dto) {
         if (validator.validate(dto)) {
-            this.taskCommandHandler.createTask(new CreateTaskCommand(dto.content(), dto.dueDate(), null));
+            this.taskCommandHandler.createTask(new CreateTaskCommand(dto.content(), dto.dueDate(), dto.parentId()));
         } else {
             this.writer.write("Error: Invalid arguments for the command add");
         }
