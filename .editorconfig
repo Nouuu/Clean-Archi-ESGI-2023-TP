@@ -1,2 +1,5 @@
 [*.sh]
 end_of_line = lf
+
+[*.java]
+end_of_line = lf
