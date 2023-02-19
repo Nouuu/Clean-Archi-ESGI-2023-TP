@@ -1,11 +1,10 @@
-package org.esgi.cleanarchi.infrastructure;
+package org.esgi.cleanarchi.infra;
 
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.domain.TaskState;
 import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
 
-import java.lang.reflect.Array;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;

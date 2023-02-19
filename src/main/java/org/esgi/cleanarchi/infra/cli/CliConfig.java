@@ -34,28 +34,27 @@ public class CliConfig {
             cliHelper.printHelpMessage();
             return;
         }
+        List<String> dtoArgs = args.stream().skip(1).toList();
         switch (args.get(0)) {
             case ("add") -> {
-                AddDto dto = new AddDtoParser().parse(args);
+                AddDto dto = new AddDtoParser().parse(dtoArgs);
                 addController.handle(dto);
             }
             case ("list") -> listController.handle();
             case ("update") -> {
-                UpdateDto updateDto = new UpdateDtoParser().parse(args);
+                UpdateDto updateDto = new UpdateDtoParser().parse(dtoArgs);
                 updateController.handle(updateDto);
             }
             case ("remove") -> {
-                RemoveDto removeDto = new RemoveDtoParser().parse(args);
+                RemoveDto removeDto = new RemoveDtoParser().parse(dtoArgs);
                 removeController.handle(removeDto);
             }
             case ("help") -> {
                 cliHelper.printHelpMessage();
-                return;
             }
             default -> {
                 cliHelper.printErrorCommandNotKnown();
                 cliHelper.printHelpMessage();
-                return;
             }
         }
     }

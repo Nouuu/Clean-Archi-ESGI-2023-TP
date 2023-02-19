@@ -9,7 +9,6 @@ import org.esgi.cleanarchi.infra.io.Writer;
 public class AddController {
     private final ArgValidator<AddDto> validator;
     private final TaskCommandHandler taskCommandHandler;
-
     private final Writer writer;
 
     public AddController(ArgValidator<AddDto> validator, TaskCommandHandler taskCommandHandler, Writer writer) {

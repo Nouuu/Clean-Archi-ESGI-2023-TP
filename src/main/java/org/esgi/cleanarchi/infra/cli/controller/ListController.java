@@ -41,8 +41,9 @@ public class ListController {
         this.writer.write(String.valueOf(taskResponseJsonViews));
 
         System.out.print("\u001B[31m");
-        System.out.println("Bonjour le monde");
+        System.out.println("List due date past");
         System.out.print("\u001B[0m");
+        System.out.println("List due active");
 
         return null;
     }

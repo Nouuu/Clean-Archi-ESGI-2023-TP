@@ -3,8 +3,8 @@ package org.esgi.cleanarchi.domain.query;
 
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
-import org.esgi.cleanarchi.infrastructure.InMemoryLogger;
-import org.esgi.cleanarchi.infrastructure.InMemoryTaskRepository;
+import org.esgi.cleanarchi.infra.InMemoryLogger;
+import org.esgi.cleanarchi.infra.InMemoryTaskRepository;
 import org.esgi.cleanarchi.kernel.Logger;
 import org.junit.Before;
 import org.junit.Test;
