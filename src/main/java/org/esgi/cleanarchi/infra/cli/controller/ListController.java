@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.infra.cli.controller;
 
+import java.util.ArrayList;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;
 import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
@@ -20,7 +21,7 @@ public class ListController {
     }
 
     public void handle() {
-        List<Task> result = this.taskQueryHandler.getAllTasksOrderByCreatedDate();
+        List<Task> result = new ArrayList<>(this.taskQueryHandler.getAllTasksOrderByCreatedDate());
 
         List<Task> overdueTasks = result.stream()
                 .filter(overdueTaskPredicate)

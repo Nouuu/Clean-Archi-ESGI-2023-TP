@@ -1,5 +1,6 @@
 package org.esgi.cleanarchi.infra.cli.helper;
 
+import java.text.SimpleDateFormat;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.infra.io.Writer;
 
@@ -40,10 +41,17 @@ public class CliHelper {
             case CANCELLED -> ANSI_BLUE;
             case CLOSED -> ANSI_BLUE_DARKER;
         };
-        this.writer.write(color + task);
+        this.writer.write(color + formatTask(task));
     }
 
     public void displayOverdueTask(Task task) {
-        this.writer.write(ANSI_RED + task);
+        this.writer.write(ANSI_RED + formatTask(task));
+    }
+
+    private String formatTask(Task task) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String dueDate = format.format(task.dueDate());
+        String createdDate = format.format(task.createdDate());
+        return task.id() + " - description: " + task.description() + " - due date: " + dueDate + " - created at: " + createdDate;
     }
 }

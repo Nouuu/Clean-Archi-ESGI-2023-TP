@@ -39,6 +39,7 @@ public class FileWriter implements Writer {
             }
         } catch (IOException e) {
             logger.logError("Error while writing file " + path);
+            e.printStackTrace();
             throw new InputOutputException(e.getMessage());
         }
     }
