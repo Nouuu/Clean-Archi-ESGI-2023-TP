@@ -28,6 +28,10 @@ public class CliConfig {
     }
 
     public void parseArg(List<String> args){
+        if (args.size() == 0) {
+            cliHelper.printHelpMessage();
+            return;
+        }
         switch (args.get(0)) {
             case ("add") -> {
                 AddDto dto = new AddDtoParser().parse(args);
@@ -42,8 +46,14 @@ public class CliConfig {
                 RemoveDto removeDto = new RemoveDtoParser().parse(args);
                 removeController.handle(removeDto);
             }
-            default -> {
+            case ("help") -> {
                 cliHelper.printHelpMessage();
+                return;
+            }
+            default -> {
+                cliHelper.printErrorCommandNotKnown();
+                cliHelper.printHelpMessage();
+                return;
             }
         }
     }

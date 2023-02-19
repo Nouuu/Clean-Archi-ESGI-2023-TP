@@ -28,7 +28,7 @@ public class JsonTaskRepository implements TaskRepository {
     public JsonTaskRepository(Reader reader, Writer writer) throws IOException {
         this.reader = reader;
         this.writer = writer;
-        load();
+        //load();
     }
 
     private void load() throws IOException {

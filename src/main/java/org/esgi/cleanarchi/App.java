@@ -26,16 +26,17 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) throws IOException {
         Logger logger = new ConsoleLogger();
-        Writer writer = new FileWriter("data.json", logger);
-        TaskRepository taskRepository = new JsonTaskRepository(new FileReader("data.json", logger), writer);
+        Writer writer = new FileWriter("/Users/remy/.consoleagenda/data.json", logger);
+        Writer consoleWriter = new ConsoleWriter();
+        TaskRepository taskRepository = new JsonTaskRepository(new FileReader("/Users/remy/.consoleagenda/data.json", logger), writer);
         TaskCommandHandler taskCommandHandler = new TaskCommandHandler(taskRepository, logger);
         TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
 
 
-        AddController addController = new AddController(new AddControllerValidator(), taskCommandHandler);
-        ListController listController = new ListController(taskQueryHandler, new ConsoleWriter());
-        RemoveController removeController = new RemoveController(new RemoveControllerValidator(), taskCommandHandler);
-        UpdateController updateController = new UpdateController(new UpdateControllerValidator(), taskCommandHandler);
+        AddController addController = new AddController(new AddControllerValidator(), taskCommandHandler, consoleWriter);
+        ListController listController = new ListController(taskQueryHandler, consoleWriter);
+        RemoveController removeController = new RemoveController(new RemoveControllerValidator(), taskCommandHandler, consoleWriter);
+        UpdateController updateController = new UpdateController(new UpdateControllerValidator(), taskCommandHandler, consoleWriter);
         CliHelper cliHelper = new CliHelper(new ConsoleWriter());
 
         CliConfig cliConfig = new CliConfig(addController, listController, updateController, removeController, cliHelper);

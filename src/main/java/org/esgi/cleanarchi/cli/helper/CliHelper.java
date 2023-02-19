@@ -17,4 +17,8 @@ public class CliHelper {
         this.writer.write("  remove [id] - Remove a todo");
         this.writer.write("  help - Display this help message");
     }
+
+    public void printErrorCommandNotKnown() {
+        this.writer.write("Error: Command not known");
+    }
 }

@@ -20,6 +20,10 @@ public class ListController {
         List<Task> result =  this.taskQueryHandler.getAllTasks();
         this.writer.write(result.toString());
 
+        System.out.print("\u001B[31m");
+        System.out.println("Bonjour le monde");
+        System.out.print("\u001B[0m");
+
         return null;
     }
 }
