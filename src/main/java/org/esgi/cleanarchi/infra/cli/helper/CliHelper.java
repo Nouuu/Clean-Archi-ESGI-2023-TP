@@ -1,16 +1,15 @@
 package org.esgi.cleanarchi.infra.cli.helper;
 
+import java.time.format.DateTimeFormatter;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.infra.io.Writer;
-
-import java.text.SimpleDateFormat;
 
 public class CliHelper {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_BLUE_DARKER = "\u001B[34m";
+    public static final String ANSI_BLUE_DARKER = "\u001B[34m;1";
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     private final Writer writer;
@@ -50,9 +49,13 @@ public class CliHelper {
     }
 
     private String formatTask(Task task) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String dueDate = format.format(task.dueDate());
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String str = task.id() + " - description: " + task.description();
+        if (task.dueDate().isPresent()) {
+            String dueDate = format.format(task.dueDate().get());
+            str += " - due date: " + dueDate;
+        }
         String createdDate = format.format(task.createdDate());
-        return task.id() + " - description: " + task.description() + " - due date: " + dueDate + " - created at: " + createdDate;
+        return str + " - created at: " + createdDate;
     }
 }
