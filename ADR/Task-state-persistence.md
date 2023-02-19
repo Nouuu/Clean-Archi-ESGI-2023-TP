@@ -1,4 +1,4 @@
-# TaskState Formatting
+# TaskState Formatting for persistence
 
 - Status: Accepted
 - Deciders: Noé Larrieu-Lacoste, Pierre Ebrahim, Rémy Machavoine, Swann HERRERA
