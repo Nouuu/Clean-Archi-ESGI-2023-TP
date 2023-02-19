@@ -77,6 +77,7 @@ public class JsonTaskRepository implements TaskRepository {
                 List.copyOf(
                                 tasks.values()
                                         .stream()
+                                        .filter(taskEntity -> taskEntity.parentId() == null)
                                         .map(taskEntity -> TaskEntityMapper
                                                 .withSubTasks(taskEntity, fromParentId(taskEntity.id()))
                                         )
