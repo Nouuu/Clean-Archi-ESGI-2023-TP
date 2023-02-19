@@ -4,7 +4,7 @@
 
   <groupId>org.esgi.cleanarchi</groupId>
   <artifactId>tp</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>tp</name>
