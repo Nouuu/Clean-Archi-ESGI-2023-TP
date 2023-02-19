@@ -10,25 +10,9 @@ import java.util.Optional;
 
 public class TaskQueryHandler {
     private final TaskRepository taskRepository;
-    private final Logger logger;
 
-    public TaskQueryHandler(TaskRepository taskRepository, Logger logger) {
+    public TaskQueryHandler(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.logger = logger;
-    }
-
-    public Task getTaskById(Integer id) {
-        Optional<Task> task = taskRepository.get(id);
-        if (task.isEmpty()) {
-            String message = "Task with id " + id + " not found";
-            logger.logError(message);
-            throw new NotFoundException(message);
-        }
-        return task.get();
-    }
-
-    public List<Task> getAllTasks() {
-        return taskRepository.getAll();
     }
 
     public List<Task> getAllTasksOrderByCreatedDate() {

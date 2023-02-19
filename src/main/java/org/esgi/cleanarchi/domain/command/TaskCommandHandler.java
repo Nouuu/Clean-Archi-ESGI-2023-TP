@@ -32,7 +32,6 @@ public class TaskCommandHandler {
                 TaskState.TODO,
                 new ArrayList<>()
         );
-//        System.out.println(task);
         taskRepository.save(task);
         logger.log("[Create task] Task \"" + task.description() + "\" created with id " + id);
         return id;

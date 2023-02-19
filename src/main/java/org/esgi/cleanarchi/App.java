@@ -50,7 +50,7 @@ public class App {
 
         TaskRepository taskRepository = new JsonTaskRepository(new FileReader(datafilePath, fileLogger), dataWriter, fileLogger);
         TaskCommandHandler taskCommandHandler = new TaskCommandHandler(taskRepository, fileLogger);
-        TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository, fileLogger);
+        TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository);
 
         CliHelper cliHelper = new CliHelper(new ConsoleWriter());
 

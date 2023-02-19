@@ -6,7 +6,6 @@ import java.time.ZonedDateTime;
 
 public record UpdateTaskCommand(
         Integer id,
-
         String content,
         ZonedDateTime dueDate,
         TaskState taskState
