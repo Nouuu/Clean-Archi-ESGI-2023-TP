@@ -1,4 +1,4 @@
-package org.esgi.cleanarchi.infrastructure;
+package org.esgi.cleanarchi.infra;
 
 import org.esgi.cleanarchi.kernel.Logger;
 
