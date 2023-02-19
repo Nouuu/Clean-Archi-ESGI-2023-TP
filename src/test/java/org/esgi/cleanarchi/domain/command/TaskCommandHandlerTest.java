@@ -1,5 +1,10 @@
 package org.esgi.cleanarchi.domain.command;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
 import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.infra.FakeLogger;
 import org.esgi.cleanarchi.infra.MockReader;
@@ -7,14 +12,11 @@ import org.esgi.cleanarchi.infra.MockWriter;
 import org.esgi.cleanarchi.infra.data.JsonTaskRepository;
 import org.esgi.cleanarchi.infra.io.Writer;
 import org.esgi.cleanarchi.kernel.Logger;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.util.Objects;
-
+import org.esgi.cleanarchi.utils.ResourceUtils;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class TaskCommandHandlerTest {
 
@@ -25,11 +27,11 @@ class TaskCommandHandlerTest {
     MockReader reader;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    public void setUp() {
         Logger logger = new FakeLogger();
         reader = new MockReader();
         writer = new MockWriter();
-        String fixture = Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("taskFixture.json")).toString();
+        String fixture = ResourceUtils.getContentStringFromResource("/taskFixture.json");
         reader.setNextContent(fixture);
         taskRepository = new JsonTaskRepository(reader, writer, logger);
         taskCommandHandler = new TaskCommandHandler(taskRepository, logger);
@@ -38,7 +40,7 @@ class TaskCommandHandlerTest {
     @Test
     void createTaskTest() {
         int idCreated = this.taskCommandHandler.createTask(
-                new CreateTaskCommand("description", null)
+            new CreateTaskCommand("description", null)
         );
 
         assertEquals(4, idCreated);
