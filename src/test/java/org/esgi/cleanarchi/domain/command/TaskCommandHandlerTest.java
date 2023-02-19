@@ -1,24 +1,17 @@
 package org.esgi.cleanarchi.domain.command;
 
-import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
-import org.esgi.cleanarchi.domain.TaskState;
 import org.esgi.cleanarchi.infra.FakeLogger;
 import org.esgi.cleanarchi.infra.MockReader;
 import org.esgi.cleanarchi.infra.MockWriter;
 import org.esgi.cleanarchi.infra.data.JsonTaskRepository;
-import org.esgi.cleanarchi.infra.io.Reader;
 import org.esgi.cleanarchi.infra.io.Writer;
 import org.esgi.cleanarchi.kernel.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;

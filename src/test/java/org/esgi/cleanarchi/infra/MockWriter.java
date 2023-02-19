@@ -7,6 +7,5 @@ public class MockWriter implements Writer {
     @Override
     public void write(String s) throws InputOutputException {
         // Do nothing
-        return;
     }
 }

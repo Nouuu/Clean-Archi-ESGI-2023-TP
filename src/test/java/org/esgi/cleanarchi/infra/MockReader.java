@@ -5,6 +5,7 @@ import org.esgi.cleanarchi.infra.io.exception.InputOutputException;
 
 public class MockReader implements Reader {
     private String content;
+
     public MockReader() {
         this.content = "";
     }

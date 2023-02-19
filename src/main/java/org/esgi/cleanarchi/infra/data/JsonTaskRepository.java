@@ -43,7 +43,7 @@ public class JsonTaskRepository implements TaskRepository {
         try {
             json = reader.read();
         } catch (InputOutputException e) {
-            logger.logError("Seems like the file don't exist, creating a new db");
+            logger.logError("Seems like the file don't exist yet, init empty db in memory");
             json = "[]";
         }
         TaskEntity[] taskEntities = gson.fromJson(json, TaskEntity[].class);

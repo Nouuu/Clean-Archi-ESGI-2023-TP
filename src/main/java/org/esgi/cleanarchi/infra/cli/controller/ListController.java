@@ -1,11 +1,11 @@
 package org.esgi.cleanarchi.infra.cli.controller;
 
-import java.util.ArrayList;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;
 import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
 import org.esgi.cleanarchi.infra.cli.helper.OverdueTaskPredicate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListController {
