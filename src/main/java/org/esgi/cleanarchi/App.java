@@ -22,6 +22,7 @@ import org.esgi.cleanarchi.kernel.Logger;
 import org.esgi.cleanarchi.kernel.PropertiesLoader;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -31,10 +32,11 @@ public class App {
         String userHome = System.getProperty("user.home");
         Properties config = PropertiesLoader.loadProperties();
         String applicationFolder = config.getProperty("application.folder");
-        String fullPath = userHome + applicationFolder;
-        Writer writer = new FileWriter(fullPath, logger);
+        String datafilePath = Paths.get(userHome, applicationFolder, config.getProperty("application.datafile")).toString();
+        String logPath = Paths.get(userHome, applicationFolder, config.getProperty("application.logfile")).toString();
+        Writer writer = new FileWriter(datafilePath, logger);
         Writer consoleWriter = new ConsoleWriter();
-        TaskRepository taskRepository = new JsonTaskRepository(new FileReader(fullPath, logger), writer);
+        TaskRepository taskRepository = new JsonTaskRepository(new FileReader(datafilePath, logger), writer);
         TaskCommandHandler taskCommandHandler = new TaskCommandHandler(taskRepository, logger);
         TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
 
