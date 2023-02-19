@@ -19,14 +19,14 @@ class UpdateDtoParseTest {
     void parseEntryStringToUpdateDtoWhenStringIsEmpty() {
         UpdateDtoParser updateDtoParser = new UpdateDtoParser();
         UpdateDto result = updateDtoParser.parse(List.of());
-        assertEquals(result, new UpdateDto(null, null, null, null));
+        assertEquals(result, new UpdateDto(null, null, null, null, null));
     }
 
     @Test
     void parseEntryStringToUpdateDtoWhenDArgIsPresentWithNotValid() {
         UpdateDtoParser updateDtoParser = new UpdateDtoParser();
         UpdateDto result = updateDtoParser.parse(List.of("123", "-d:pomme"));
-        assertEquals(result, new UpdateDto(123, null, null, null));
+        assertEquals(result, new UpdateDto(123, null, null, null, null));
 
     }
 
@@ -34,14 +34,14 @@ class UpdateDtoParseTest {
     void parseEntryStringToUpdateDtoWhenDArgIsPresentWithAValidValue() {
         UpdateDtoParser updateDtoParser = new UpdateDtoParser();
         UpdateDto result = updateDtoParser.parse(List.of("123", "-d:2020-12-12"));
-        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null));
+        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null, null));
     }
 
     @Test
     void parseEntryStringToUpdateDtoWhenDArgIsPresentWithAValidValueANDSHasNotAValidValue() {
         UpdateDtoParser updateDtoParser = new UpdateDtoParser();
         UpdateDto result = updateDtoParser.parse(List.of("123", "-d:2020-12-12", "-s:pomme"));
-        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null));
+        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null, null));
     }
 
 
@@ -49,6 +49,20 @@ class UpdateDtoParseTest {
     void parseEntryStringToUpdateDtoWhenDArgIsPresentWithAValidValueANDSAValidValue() {
         UpdateDtoParser updateDtoParser = new UpdateDtoParser();
         UpdateDto result = updateDtoParser.parse(List.of("123", "-d:2020-12-12", "-s:done"));
-        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), StateDto.DONE));
+        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), StateDto.DONE, null));
+    }
+
+    @Test
+    void parseEntryStringToUpdateDtoWhenParentIdArgIsFilled() {
+        UpdateDtoParser updateDtoParser = new UpdateDtoParser();
+        UpdateDto result = updateDtoParser.parse(List.of("123", "-d:2020-12-12", "-p:123"));
+        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null, 123));
+    }
+
+    @Test
+    void parseEntryStringToUpdateDtoWhenParentIdArgIsFilledButIsNotValid() {
+        UpdateDtoParser updateDtoParser = new UpdateDtoParser();
+        UpdateDto result = updateDtoParser.parse(List.of("123", "-d:2020-12-12", "-p:pome"));
+        assertEquals(result, new UpdateDto(123, null, LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(ZoneId.systemDefault()), null, null));
     }
 }

@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 
 public record AddDto(
         String content,
-        ZonedDateTime dueDate
+        ZonedDateTime dueDate,
+
+        Integer parentId
 ) {
 }
