@@ -1,5 +1,52 @@
 # Console task manager
 
+
+## How to use
+
+> Use java 17 or higher
+
+We have a run.sh file at the racine of the project. You can use it to run the app.
+
+```bash
+./run.sh
+Usage: todo [command] [options]
+Commands:
+  add -c [content] -d [dueDate] - Add a new todo
+  list - List all todos
+  update [id] -c [content] -d [dueDate] -s [StateDto] - Update a todo
+  remove [id] - Remove a todo
+  help - Display this help message
+```
+
+This file need to be executable. If it's not the case, you can use this command to make it executable:
+
+```bash
+chmod +x run.sh
+```
+
+This app is using a json file (`data.json`) to store the data. The file is located in the `~/.consoleagenda/` folder.
+A file with the log of the application is also in this folder (`log.txt`).
+You can change those value in the `application.properties` file.
+
+If you want to use the application directly with the json make sure that there is at least this content
+`[]`
+
+## Design and collective reflection diagram
+
+![diagram](./docs/diagram.png)
+
+
+## Architecture decision
+
+- [Architecture type](./ADR/Architecture-type.md)
+- [Testing Strategy](./ADR/Testing-strategy.md)
+- [Task State Persistence](./ADR/Task-state-persistence.md)
+- [IO Exception Handling](./ADR/IO-exception-handling.md)
+
+---
+
+# Statement
+
 ## Purpose
 
 Our objective is to build a task manager accessible from the command line.
