@@ -1,5 +1,10 @@
 # Console task manager
 
+## Prequisites
+
+- Java 17
+- Maven 3
+
 ## Purpose
 
 Our objective is to build a task manager accessible from the command line.
