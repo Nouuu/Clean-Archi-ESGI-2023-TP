@@ -17,9 +17,9 @@ We have a run.sh file at the racine of the project. You can use it to run the ap
 ./run.sh
 Usage: todo [command] [options]
 Commands:
-  add -c [content] -d [dueDate] - Add a new todo
+  add -c [content] -d:[dueDate] -p:[parentTaskId] - Add a new todo
   list - List all todos
-  update [id] -c [content] -d [dueDate] -s [StateDto] - Update a todo
+  update [id] -c [content] -d:[dueDate] -s:[StateDto] - Update a todo
   remove [id] - Remove a todo
   help - Display this help message
 ```
