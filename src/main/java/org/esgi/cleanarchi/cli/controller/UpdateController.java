@@ -9,7 +9,6 @@ import org.esgi.cleanarchi.domain.command.UpdateTaskCommand;
 
 public class UpdateController {
     private final ArgValidator validator;
-
     private final TaskCommandHandler taskCommandHandler;
 
     public UpdateController(ArgValidator<UpdateDto> validator, TaskCommandHandler taskCommandHandler) {

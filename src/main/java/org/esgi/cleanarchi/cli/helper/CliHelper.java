@@ -1,16 +1,20 @@
 package org.esgi.cleanarchi.cli.helper;
 
-public class CliHelper {
+import org.esgi.cleanarchi.infra.io.Writer;
 
-    public CliHelper() {}
+public class CliHelper {
+    private final Writer writer;
+    public CliHelper(Writer writer) {
+        this.writer = writer;
+    }
 
     public void printHelpMessage() {
-        System.out.println("Usage: todo [command] [options]");
-        System.out.println("Commands:");
-        System.out.println("  add -c [content] -d [dueDate] - Add a new todo");
-        System.out.println("  list - List all todos");
-        System.out.println("  update [id] -c [content] -d [dueDate] -s [StateDto] - Update a todo");
-        System.out.println("  remove [id] - Remove a todo");
-        System.out.println("  help - Display this help message");
+        this.writer.write("Usage: todo [command] [options]");
+        this.writer.write("Commands:");
+        this.writer.write("  add -c [content] -d [dueDate] - Add a new todo");
+        this.writer.write("  list - List all todos");
+        this.writer.write("  update [id] -c [content] -d [dueDate] -s [StateDto] - Update a todo");
+        this.writer.write("  remove [id] - Remove a todo");
+        this.writer.write("  help - Display this help message");
     }
 }
