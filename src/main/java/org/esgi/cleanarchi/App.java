@@ -1,8 +1,6 @@
 package org.esgi.cleanarchi;
 
-import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.domain.TaskRepository;
-import org.esgi.cleanarchi.domain.TaskState;
 import org.esgi.cleanarchi.domain.command.TaskCommandHandler;
 import org.esgi.cleanarchi.domain.query.TaskQueryHandler;
 import org.esgi.cleanarchi.infra.DefaultLogger;
@@ -28,7 +26,6 @@ import org.esgi.cleanarchi.kernel.PropertiesLoader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Properties;
 

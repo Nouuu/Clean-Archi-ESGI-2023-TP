@@ -1,8 +1,9 @@
 package org.esgi.cleanarchi.infra.cli.helper;
 
-import java.text.SimpleDateFormat;
 import org.esgi.cleanarchi.domain.Task;
 import org.esgi.cleanarchi.infra.io.Writer;
+
+import java.text.SimpleDateFormat;
 
 public class CliHelper {
     public static final String ANSI_RED = "\u001B[31m";
