@@ -5,6 +5,7 @@ import java.util.List;
 
 public record TaskEntity(
         Integer id,
+        Integer parentId,
         String description,
         ZonedDateTime createdDate,
         ZonedDateTime dueDate,

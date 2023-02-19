@@ -4,6 +4,7 @@ import java.time.ZonedDateTime;
 
 public record CreateTaskCommand(
         String description,
-        ZonedDateTime dueDate
+        ZonedDateTime dueDate,
+        Integer parentId
 ) {
 }

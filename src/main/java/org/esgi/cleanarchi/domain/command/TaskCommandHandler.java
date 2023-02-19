@@ -7,7 +7,7 @@ import org.esgi.cleanarchi.kernel.Logger;
 import org.esgi.cleanarchi.kernel.exception.NotFoundException;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -25,12 +25,13 @@ public class TaskCommandHandler {
         Integer id = taskRepository.nextId();
         Task task = Task.of(
                 id,
+                command.parentId(),
                 command.description(),
                 ZonedDateTime.now(),
                 command.dueDate(),
                 null,
                 TaskState.TODO,
-                new ArrayList<>()
+                List.of()
         );
         taskRepository.save(task);
         logger.log("[Create task] Task \"" + task.description() + "\" created with id " + id);
@@ -47,12 +48,13 @@ public class TaskCommandHandler {
         Task task = optionalTask.get();
         Task updatedTask = Task.of(
                 task.id(),
+                task.parentId().orElse(null),
                 command.content() == null ? task.description() : command.content(),
                 task.createdDate(),
                 command.dueDate() == null ? task.dueDate().orElse(null) : command.dueDate(),
                 getOptionalZonedDateTime(command, task),
                 getTaskState(command, task),
-                task.subTasks()
+                List.of()
         );
         taskRepository.save(updatedTask);
         logger.log("[Update task] Task \"" + updatedTask.description() + "\" updated");
