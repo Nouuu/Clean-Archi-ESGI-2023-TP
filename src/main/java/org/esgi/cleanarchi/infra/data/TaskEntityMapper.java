@@ -13,12 +13,13 @@ public class TaskEntityMapper {
     static Task fromEntity(TaskEntity taskEntity) {
         return Task.of(
                 taskEntity.id(),
+                taskEntity.parentId(),
                 taskEntity.description(),
                 taskEntity.createdDate(),
                 taskEntity.dueDate(),
                 taskEntity.closeDate(),
                 TaskState.valueOf(taskEntity.taskState()),
-                fromEntities(taskEntity.subTasks())
+                taskEntity.subTasks().stream().map(TaskEntityMapper::fromEntity).toList()
         );
     }
 
@@ -34,12 +35,26 @@ public class TaskEntityMapper {
     static TaskEntity toEntity(Task task) {
         return new TaskEntity(
                 task.id(),
+                task.parentId().orElse(null),
                 task.description(),
                 task.createdDate(),
                 task.dueDate().orElse(null),
                 task.closeDate().orElse(null),
                 task.taskState().name(),
-                toEntities(task.subTasks())
+                List.of()
+        );
+    }
+
+    static TaskEntity withSubTasks(TaskEntity taskEntity, List<TaskEntity> subTasks) {
+        return new TaskEntity(
+                taskEntity.id(),
+                taskEntity.parentId(),
+                taskEntity.description(),
+                taskEntity.createdDate(),
+                taskEntity.dueDate(),
+                taskEntity.closeDate(),
+                taskEntity.taskState(),
+                subTasks
         );
     }
 

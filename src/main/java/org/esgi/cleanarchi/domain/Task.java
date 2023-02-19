@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public final class Task {
     private final Integer id;
+    private final Integer parentId;
     private final String description;
     private final ZonedDateTime createdDate;
     private final ZonedDateTime dueDate;
@@ -14,8 +15,9 @@ public final class Task {
     private final TaskState taskState;
     private final List<Task> subTasks;
 
-    private Task(Integer id, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
+    private Task(Integer id, Integer parentId, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
         this.id = Objects.requireNonNull(id);
+        this.parentId = parentId;
         this.description = Objects.requireNonNull(description);
         this.createdDate = Objects.requireNonNull(createdDate);
         this.dueDate = dueDate;
@@ -24,8 +26,8 @@ public final class Task {
         this.subTasks = subTasks;
     }
 
-    public static Task of(Integer id, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
-        return new Task(id, description, createdDate, dueDate, closeDate, taskState, subTasks);
+    public static Task of(Integer id, Integer parentId, String description, ZonedDateTime createdDate, ZonedDateTime dueDate, ZonedDateTime closeDate, TaskState taskState, List<Task> subTasks) {
+        return new Task(id, parentId, description, createdDate, dueDate, closeDate, taskState, subTasks);
     }
 
     public Integer id() {
@@ -52,6 +54,10 @@ public final class Task {
         return taskState;
     }
 
+    public Optional<Integer> parentId() {
+        return Optional.ofNullable(parentId);
+    }
+
     public List<Task> subTasks() {
         return subTasks;
     }
@@ -60,6 +66,7 @@ public final class Task {
     public String toString() {
         return "Task{" +
                 "id=" + id +
+                ", parentId=" + parentId +
                 ", description='" + description + '\'' +
                 ", createdDate=" + createdDate +
                 ", dueDate=" + dueDate +
@@ -68,4 +75,6 @@ public final class Task {
                 ", subTasks=" + subTasks +
                 '}';
     }
+
+
 }

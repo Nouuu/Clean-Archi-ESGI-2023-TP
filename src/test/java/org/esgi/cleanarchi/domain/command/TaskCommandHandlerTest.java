@@ -40,7 +40,7 @@ class TaskCommandHandlerTest {
     @Test
     void createTaskTest() {
         int idCreated = this.taskCommandHandler.createTask(
-            new CreateTaskCommand("description", null)
+            new CreateTaskCommand("description", null, null)
         );
 
         assertEquals(4, idCreated);
