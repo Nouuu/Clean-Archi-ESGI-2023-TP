@@ -6,17 +6,19 @@ import org.esgi.cleanarchi.domain.TaskRepository;
 import org.esgi.cleanarchi.infra.InMemoryLogger;
 import org.esgi.cleanarchi.infra.InMemoryTaskRepository;
 import org.esgi.cleanarchi.kernel.Logger;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class TaskQueryCommandHandlerTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class TaskQueryHandlerTest {
     TaskRepository taskRepository;
     TaskQueryHandler taskQueryHandler;
     Logger logger = new InMemoryLogger();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.taskRepository = new InMemoryTaskRepository();
         this.taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
@@ -24,12 +26,12 @@ public class TaskQueryCommandHandlerTest {
 
 
     @Test
-    public void listAllTasksTestOrderedByCreationDateTest() {
+    void listAllTasksTestOrderedByCreationDateTest() {
         List<Task> tasks = this.taskQueryHandler.getAllTasksOrderByCreatedDate();
 
-        assert tasks.size() == 3;
-        assert tasks.get(0).id() == 3;
-        assert tasks.get(1).id() == 2;
-        assert tasks.get(2).id() == 1;
+        assertEquals(3, tasks.size());
+        assertEquals(3, tasks.get(0).id());
+        assertEquals(2, tasks.get(1).id());
+        assertEquals(1, tasks.get(2).id());
     }
 }
