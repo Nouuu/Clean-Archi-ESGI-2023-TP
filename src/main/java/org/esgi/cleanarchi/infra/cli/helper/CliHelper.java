@@ -22,9 +22,12 @@ public class CliHelper {
     public void printHelpMessage() {
         this.writer.write("Usage: todo [command] [options]");
         this.writer.write("Commands:");
-        this.writer.write("  add -c [content] -d [dueDate] - Add a new todo");
+        this.writer.write("  add -c [content] -d:[dueDate] - Add a new todo -p:[parentTaskId]");
+        this.writer.write("Example : add -c \"new task\" -d:2023-02-02 - Add a new todo with due date 2023-02-02");
+        this.writer.write("Example : add -c \"sub task\" -p:1 - Add a new sub todo with parent task id 1");
         this.writer.write("  list - List all todos");
-        this.writer.write("  update [id] -c [content] -d [dueDate] -s [StateDto] - Update a todo");
+        this.writer.write("  update [id] -c [content] -d:[dueDate] -s:[StateDto] - Update a todo");
+        this.writer.write("Example : update 1 -c \"new content\" -d:2023-02-02 - Update a todo with new content and due date 2023-02-02");
         this.writer.write("  remove [id] - Remove a todo");
         this.writer.write("  help - Display this help message");
     }
