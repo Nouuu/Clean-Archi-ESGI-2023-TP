@@ -9,7 +9,7 @@ public record TaskEntity(
         ZonedDateTime createdDate,
         ZonedDateTime dueDate,
         ZonedDateTime closeDate,
-        Integer taskState,
+        String taskState,
         List<TaskEntity> subTasks
 ) {
 }

@@ -17,7 +17,7 @@ public class TaskEntityMapper {
                 taskEntity.createdDate(),
                 Optional.ofNullable(taskEntity.dueDate()),
                 Optional.ofNullable(taskEntity.closeDate()),
-                TaskState.fromValue(taskEntity.taskState()),
+                TaskState.valueOf(taskEntity.taskState()),
                 fromEntities(taskEntity.subTasks())
         );
     }
@@ -38,7 +38,7 @@ public class TaskEntityMapper {
                 task.createdDate(),
                 task.dueDate().orElse(null),
                 task.closeDate().orElse(null),
-                task.taskState().value(),
+                task.taskState().name(),
                 toEntities(task.subTasks())
         );
     }
