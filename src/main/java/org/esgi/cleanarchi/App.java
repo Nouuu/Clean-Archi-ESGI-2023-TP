@@ -19,16 +19,22 @@ import org.esgi.cleanarchi.infra.io.FileWriter;
 import org.esgi.cleanarchi.infra.io.Writer;
 import org.esgi.cleanarchi.kernel.ConsoleLogger;
 import org.esgi.cleanarchi.kernel.Logger;
+import org.esgi.cleanarchi.kernel.PropertiesLoader;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Properties;
 
 public class App {
     public static void main(String[] args) throws IOException {
         Logger logger = new ConsoleLogger();
-        Writer writer = new FileWriter("/Users/remy/.consoleagenda/data.json", logger);
+        String userHome = System.getProperty("user.home");
+        Properties config = PropertiesLoader.loadProperties();
+        String applicationFolder = config.getProperty("application.folder");
+        String fullPath = userHome + applicationFolder;
+        Writer writer = new FileWriter(fullPath, logger);
         Writer consoleWriter = new ConsoleWriter();
-        TaskRepository taskRepository = new JsonTaskRepository(new FileReader("/Users/remy/.consoleagenda/data.json", logger), writer);
+        TaskRepository taskRepository = new JsonTaskRepository(new FileReader(fullPath, logger), writer);
         TaskCommandHandler taskCommandHandler = new TaskCommandHandler(taskRepository, logger);
         TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
 
