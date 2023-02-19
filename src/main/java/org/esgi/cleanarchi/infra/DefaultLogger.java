@@ -16,6 +16,11 @@ public class DefaultLogger implements Logger {
         this.errorWriter = errorWriter;
     }
 
+    public DefaultLogger(Writer writer) {
+        this.writer = writer;
+        this.errorWriter = writer;
+    }
+
     @Override
     public void log(String s) {
         String date = generateDateOfNowFormatted();
