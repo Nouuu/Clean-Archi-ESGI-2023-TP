@@ -55,4 +55,17 @@ public final class Task {
     public List<Task> subTasks() {
         return subTasks;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+            "id=" + id +
+            ", description='" + description + '\'' +
+            ", createdDate=" + createdDate +
+            ", dueDate=" + dueDate +
+            ", closeDate=" + closeDate +
+            ", taskState=" + taskState +
+            ", subTasks=" + subTasks +
+            '}';
+    }
 }

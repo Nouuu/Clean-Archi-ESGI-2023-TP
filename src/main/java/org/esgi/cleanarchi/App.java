@@ -6,6 +6,7 @@ import org.esgi.cleanarchi.infra.cli.controller.ListController;
 import org.esgi.cleanarchi.infra.cli.controller.RemoveController;
 import org.esgi.cleanarchi.infra.cli.controller.UpdateController;
 import org.esgi.cleanarchi.infra.cli.helper.CliHelper;
+import org.esgi.cleanarchi.infra.cli.helper.OverdueTaskPredicate;
 import org.esgi.cleanarchi.infra.cli.validator.AddControllerValidator;
 import org.esgi.cleanarchi.infra.cli.validator.RemoveControllerValidator;
 import org.esgi.cleanarchi.infra.cli.validator.UpdateControllerValidator;
@@ -41,11 +42,12 @@ public class App {
         TaskQueryHandler taskQueryHandler = new TaskQueryHandler(taskRepository, logger);
 
 
+        CliHelper cliHelper = new CliHelper(new ConsoleWriter());
         AddController addController = new AddController(new AddControllerValidator(), taskCommandHandler, consoleWriter);
-        ListController listController = new ListController(taskQueryHandler, consoleWriter);
+        OverdueTaskPredicate overdueTaskPredicate = new OverdueTaskPredicate();
+        ListController listController = new ListController(taskQueryHandler, cliHelper, overdueTaskPredicate);
         RemoveController removeController = new RemoveController(new RemoveControllerValidator(), taskCommandHandler, consoleWriter);
         UpdateController updateController = new UpdateController(new UpdateControllerValidator(), taskCommandHandler, consoleWriter);
-        CliHelper cliHelper = new CliHelper(new ConsoleWriter());
 
         CliConfig cliConfig = new CliConfig(addController, listController, updateController, removeController, cliHelper);
         cliConfig.parseArg(Arrays.asList(args));

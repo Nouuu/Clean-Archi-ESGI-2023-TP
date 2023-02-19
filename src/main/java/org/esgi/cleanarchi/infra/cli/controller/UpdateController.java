@@ -8,7 +8,7 @@ import org.esgi.cleanarchi.domain.command.UpdateTaskCommand;
 import org.esgi.cleanarchi.infra.io.Writer;
 
 public class UpdateController {
-    private final ArgValidator validator;
+    private final ArgValidator<UpdateDto> validator;
     private final TaskCommandHandler taskCommandHandler;
     private final Writer writer;
 
@@ -18,7 +18,7 @@ public class UpdateController {
         this.writer = writer;
     }
 
-    public Void handle(UpdateDto updateDto) {
+    public void handle(UpdateDto updateDto) {
         if (this.validator.validate(updateDto)) {
             this.taskCommandHandler.updateTask(
                     new UpdateTaskCommand(
@@ -31,6 +31,5 @@ public class UpdateController {
         } else {
             this.writer.write("Error: Invalid arguments for the command update");
         }
-        return null;
     }
 }

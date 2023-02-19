@@ -1,6 +1,7 @@
 package org.esgi.cleanarchi.infra.cli;
 
 import java.util.List;
+import org.esgi.cleanarchi.domain.TaskState;
 import org.esgi.cleanarchi.infra.cli.controller.AddController;
 import org.esgi.cleanarchi.infra.cli.controller.ListController;
 import org.esgi.cleanarchi.infra.cli.controller.RemoveController;
